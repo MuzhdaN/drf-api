@@ -20,7 +20,8 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_post_mlmkio', blank=True)
+        upload_to='images/', default='../default_post_mlmkio', blank=True
+    )
     image_filter_choices = [
         ('1977', '1977'),
         ('brannan', 'Brannan'),
@@ -37,6 +38,9 @@ class Post(models.Model):
         ('walden', 'Walden'),
         ('xpro2', 'X-pro II')
     ]
+    image_filter = models.CharField(
+        max_length=32, choices=image_filter_choices, default='normal'
+    )
 
     class Meta:
         ordering = ['-created_at']
